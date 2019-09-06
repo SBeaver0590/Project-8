@@ -1,17 +1,14 @@
 {
   "development": {
     "storage": "developement.db",
-    "dialect": "sqlite3",
-    "operatorsAliases": false
+    "dialect": "sqlite"
   },
   "test": {
     "storage": "test.db",
-    "dialect": "sqlite3",
-    "operatorsAliases": false
+    "dialect": "sqlite"
   },
   "production": {
     "storage": "production.db",
-    "dialect": "sqlite3",
-    "operatorsAliases": false
+    "dialect": "sqlite"
   }
 }

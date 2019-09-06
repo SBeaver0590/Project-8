@@ -17,7 +17,7 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/', routes);
 app.use('/books', books);
@@ -47,6 +47,7 @@ app.use(function(err, req, res, next) { //production error handler
     error: {}
   });
 });
+
 
 
 module.exports = app;
