@@ -95,3 +95,19 @@ input[type=text] {
 .error {
   color: rgb(236, 15, 15);
 }
+
+.searchBtn{
+  margin-left: 0px !Important
+}
+
+.width {
+  width: 10% !Important
+}
+
+.tableWidth{
+  width: 54%
+}
+
+.paging {
+ margin-left: 5px
+}

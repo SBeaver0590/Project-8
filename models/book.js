@@ -1,3 +1,5 @@
+var book = require("../models").Book;
+
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Book = sequelize.define('Book', {
@@ -9,7 +11,14 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    author: DataTypes.STRING,
+    author: {
+      type : DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: "Author is required"
+        }
+      }
+    },
     genre: DataTypes.STRING,
     year: DataTypes.INTEGER
   }, {});
