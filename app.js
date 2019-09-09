@@ -9,6 +9,10 @@ var books = require('./routes/books');
 
 var app = express();
 
+// app.get('/', function(req, res){
+//     res.sendFile(__dirname+'/bin/index.html'); // change the path to your index.html
+// });
+
 //view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -17,14 +21,14 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/books', books);
 
 // catch 404 and send to error handler
 app.use(function(req, res, next){
-  var err = new Error('Not Found');
+  var err = new Error('page-not-found');
   err.status = 404;
   next(err);
 });

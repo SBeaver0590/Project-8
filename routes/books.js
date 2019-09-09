@@ -6,7 +6,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 var Book = require("../models").Book;
 // var sqlite = require('sqlite');
-const Sequelize = require('sequelize');
+var Sequelize = require('sequelize');
 // GET books listed show in descending order
 router.get('/', function (request, response, next) {
   let pg = request.query.page;
@@ -23,13 +23,14 @@ router.get('/', function (request, response, next) {
           limit: 8
       }).then(function (books) {
           const totalPgs = Math.ceil(totalBks.length / 8);
-          response.render("all_books", { title: "Books", books: books, totalPgs: totalPgs });
+          response.render("index", { title: "Books", books: books, totalPgs: totalPgs });
       }).catch(function (err) {
           console.log(err);
           response.sendStatus(500);
       });
   });
 });
+
 
 // POST create book
 router.post('/', function(req, res, next) {
@@ -48,7 +49,7 @@ router.post('/', function(req, res, next) {
 
 //CREATE New Book Form
 router.get('/new', function(req, res, next) {
-    res.render("new_book", { title: "New Book", book: Book.build()});
+    res.render("new-book", { title: "New Book", book: Book.build()});
 });
 
 // EDIT Book Form
@@ -79,9 +80,9 @@ router.get("/:id/edit", function(req, res, next){
 
   // GET SINGLE Book
   router.get("/:id", function(req, res, next){
-    Book.findById(req.params.id).then(function(book){
+    Book.findByPk(req.params.id).then(function(book){
       if(book) {
-        res.render("books/show", {book: book, title: book.title});  
+        res.render("update-book", {book: book, title: book.title});  
       } else {
         res.send(404);
       }
