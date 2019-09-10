@@ -1,4 +1,4 @@
-var book = require("../models").Book;
+// var book = require("../models").Book;
 
 'use strict';
 module.exports = (sequelize, DataTypes) => {
@@ -21,7 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     genre: DataTypes.STRING,
     year: DataTypes.INTEGER
-  }, {});
+  }, {
+    tableName: 'Books'
+  });
   Book.associate = function(models) {
     // associations can be defined here
   };
