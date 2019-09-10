@@ -55,7 +55,7 @@ router.get('/new', function(req, res, next) {
 
 // EDIT Book Form
 router.get("/:id/edit", function(req, res, next){
-    Book.findByP(req.params.id).then(function(book){
+    Book.findByPk(req.params.id).then(function(book){
       if(book) {
         res.render("books/edit", {book: book, title: "Edit Book"});      
       } else {
@@ -67,17 +67,17 @@ router.get("/:id/edit", function(req, res, next){
   });
 
   //DELETE Book Form
-  router.get("/:id/delete", function(req, res, next){
-    Book.findByPk(req.params.id).then(function(book){  
-      if(book) {
-        res.render("books", {book: book, title: "Delete Book"});
-      } else {
-        res.send(404);
-      }
-    }).catch(function(error){
-        res.send(500, error);
-     });
-  });
+  // router.get("/:id/delete", function(req, res, next){
+  //   Book.findByPk(req.params.id).then(function(book){  
+  //     if(book) {
+  //       res.render("/books", {book: book, title: "Delete Book"});
+  //     } else {
+  //       res.send(404);
+  //     }
+  //   }).catch(function(error){
+  //       res.send(500, error);
+  //    });
+  // });
 
   // GET SINGLE Book
   router.get("/:id", function(req, res, next){
@@ -116,7 +116,7 @@ router.get("/:id/edit", function(req, res, next){
   });
   
   // DELETE Single Book
-  router.delete("/:id", function(req, res, next){
+  router.post("/:id/delete", function(req, res, next){
     Book.findByPk(req.params.id).then(function(book){  
       if(book) {
         return book.destroy();
